@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartType } from 'chart.js';
 import { ChartEvent } from 'chart.js/dist/core/core.plugins';
+import { GraficasService } from '../../services/graficas-service.service';
 
 @Component({
   selector: 'app-dona',
@@ -35,9 +36,14 @@ export class DonaComponent implements OnInit {
     console.log(event, active);
   }
   
-  constructor() { }
+  constructor(
+    private graficaService : GraficasService
+  ) { }
 
   ngOnInit(): void {
+    this.graficaService.getUsuariosRedesSociales().subscribe(
+      data => { console.log(data)}
+    );
   }
 
 }
