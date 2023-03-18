@@ -30,19 +30,27 @@ export class DonaHttpComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.graficaService.getUsuariosRedesSociales().subscribe(
-      data => {
-        this.existeData = true;
+    // this.graficaService.getUsuariosRedesSociales().subscribe(
+    //   data => {
+    //     this.existeData = true;
 
-        const labels = Object.keys(data);
-        const dataset = Object.values(data);
+    //     const labels = Object.keys(data);
+    //     const dataset = Object.values(data);
 
-        this.doughnutChartData.labels = labels;
-        this.doughnutChartData.datasets = [{data: dataset, backgroundColor: this.colores}];
-        
-        console.log(this.doughnutChartData)
-      }
-    );
+    //     this.doughnutChartData.labels = labels;
+    //     this.doughnutChartData.datasets = [{data: dataset, backgroundColor: this.colores}];
+
+    //     console.log(this.doughnutChartData)
+    //   }
+    // );
+
+    this.graficaService.getUsuariosRedesSocialesDonaData()
+    .subscribe( ({ labels, values }) => {
+      this.existeData = true;
+      
+      this.doughnutChartData.labels = labels;
+      this.doughnutChartData.datasets = [{data: values, backgroundColor: this.colores}];
+    })
   }
 
 }
