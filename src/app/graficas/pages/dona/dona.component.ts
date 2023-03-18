@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ChartData, ChartType } from 'chart.js';
 import { ChartEvent } from 'chart.js/dist/core/core.plugins';
-import { GraficasService } from '../../services/graficas-service.service';
 
 @Component({
   selector: 'app-dona',
   templateUrl: './dona.component.html',
   styleUrls: ['./dona.component.css']
 })
-export class DonaComponent implements OnInit {
+export class DonaComponent {
   public doughnutChartLabels: string[] = [ 'Download Sales', 'In-Store Sales', 'Mail-Order Sales' ];
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
@@ -36,14 +35,5 @@ export class DonaComponent implements OnInit {
     console.log(event, active);
   }
   
-  constructor(
-    private graficaService : GraficasService
-  ) { }
-
-  ngOnInit(): void {
-    this.graficaService.getUsuariosRedesSociales().subscribe(
-      data => { console.log(data)}
-    );
-  }
 
 }

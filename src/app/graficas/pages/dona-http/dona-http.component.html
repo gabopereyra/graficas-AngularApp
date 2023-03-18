@@ -1,1 +1,20 @@
-<p>dona-http works!</p>
+<h1>Redes Sociales mas usadas</h1>
+<hr>
+<div *ngIf="!existeData; else grafo" class="alert alert-info">
+    Cargando data...
+</div>
+
+<ng-template #grafo>
+    <div class="row">
+        <div class="col">
+            <div style="height: 80vh;">
+                <canvas baseChart class="chart"
+                    [data]="doughnutChartData"
+                    [type]="doughnutChartType"
+                    >
+                </canvas>   
+                <span class="float-end text-primary">Informacion en millones de usuarios</span>     
+            </div>
+        </div>
+    </div>
+</ng-template>
